@@ -43,6 +43,7 @@ class ListViewController : UITableViewController {
         
         // 1. 추가 사항 : 서브 타이틀에 데이터 연결
         cell.detailTextLabel?.text = row.description
+        
         return cell
     }
     
