@@ -48,6 +48,7 @@ class ListViewController : UITableViewController {
         let opendate = cell.viewWithTag(103) as? UILabel
         // 영화 별점이 표시될 레이블을 rating 변수로 받음
         let rating = cell.viewWithTag(104) as? UILabel
+        
         // 데이터 소스에 저장될 값을 각 레이블 변수에 할당
         title?.text = row.title
         desc?.text = row.description
