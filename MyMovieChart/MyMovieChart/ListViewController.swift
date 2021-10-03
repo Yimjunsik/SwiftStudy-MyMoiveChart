@@ -39,10 +39,20 @@ class ListViewController : UITableViewController {
         let row = self.list[indexPath.row]
         // 테이블 셀 객체를 직접 생성하는 대신 큐로부터 가져옴
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
-        cell.textLabel?.text = row.title
-        
-        // 1. 추가 사항 : 서브 타이틀에 데이터 연결
-        cell.detailTextLabel?.text = row.description
+
+        // 영화 제목이 표시될 레이블을 title 변수로 받음
+        let title = cell.viewWithTag(101) as? UILabel
+        // 영화 요약이 표시될 레이블을 desc 변수로 받음
+        let desc = cell.viewWithTag(102) as? UILabel
+        // 영화 개봉일이 표시될 레이블을 opendate 변수로 받음
+        let opendate = cell.viewWithTag(103) as? UILabel
+        // 영화 별점이 표시될 레이블을 rating 변수로 받음
+        let rating = cell.viewWithTag(104) as? UILabel
+        // 데이터 소스에 저장될 값을 각 레이블 변수에 할당
+        title?.text = row.title
+        desc?.text = row.description
+        opendate?.text = row.opendate
+        rating?.text = "\(row.rating!)"
         
         return cell
     }
