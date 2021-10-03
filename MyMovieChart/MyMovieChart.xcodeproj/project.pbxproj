@@ -15,6 +15,7 @@
 		227D691026FC435500CBB821 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227D690E26FC435500CBB821 /* LaunchScreen.storyboard */; };
 		227D691826FC4C6000CBB821 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D691726FC4C6000CBB821 /* ListViewController.swift */; };
 		227D691A26FC5A6E00CBB821 /* MovieVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D691926FC5A6E00CBB821 /* MovieVO.swift */; };
+		22C110562709EFD70087F791 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C110552709EFD70087F791 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		227D691126FC435500CBB821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227D691726FC4C6000CBB821 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		227D691926FC5A6E00CBB821 /* MovieVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVO.swift; sourceTree = "<group>"; };
+		22C110552709EFD70087F791 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				227D691126FC435500CBB821 /* Info.plist */,
 				227D691726FC4C6000CBB821 /* ListViewController.swift */,
 				227D691926FC5A6E00CBB821 /* MovieVO.swift */,
+				22C110552709EFD70087F791 /* MovieCell.swift */,
 			);
 			path = MyMovieChart;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				227D690826FC435200CBB821 /* ViewController.swift in Sources */,
 				227D690426FC435200CBB821 /* AppDelegate.swift in Sources */,
+				22C110562709EFD70087F791 /* MovieCell.swift in Sources */,
 				227D691826FC4C6000CBB821 /* ListViewController.swift in Sources */,
 				227D690626FC435200CBB821 /* SceneDelegate.swift in Sources */,
 				227D691A26FC5A6E00CBB821 /* MovieVO.swift in Sources */,
