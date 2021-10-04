@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2251D86F270AD0DB00A9EC4E /* secret.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2251D86C270AD0DB00A9EC4E /* secret.jpeg */; };
+		2251D870270AD0DB00A9EC4E /* darknight.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2251D86D270AD0DB00A9EC4E /* darknight.jpeg */; };
+		2251D871270AD0DB00A9EC4E /* rain.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2251D86E270AD0DB00A9EC4E /* rain.jpeg */; };
 		227D690426FC435200CBB821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D690326FC435200CBB821 /* AppDelegate.swift */; };
 		227D690626FC435200CBB821 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D690526FC435200CBB821 /* SceneDelegate.swift */; };
 		227D690826FC435200CBB821 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D690726FC435200CBB821 /* ViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2251D86C270AD0DB00A9EC4E /* secret.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = secret.jpeg; sourceTree = "<group>"; };
+		2251D86D270AD0DB00A9EC4E /* darknight.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = darknight.jpeg; sourceTree = "<group>"; };
+		2251D86E270AD0DB00A9EC4E /* rain.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rain.jpeg; sourceTree = "<group>"; };
 		227D690026FC435200CBB821 /* MyMovieChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovieChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227D690326FC435200CBB821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227D690526FC435200CBB821 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2251D865270ACB2700A9EC4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2251D86D270AD0DB00A9EC4E /* darknight.jpeg */,
+				2251D86E270AD0DB00A9EC4E /* rain.jpeg */,
+				2251D86C270AD0DB00A9EC4E /* secret.jpeg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		227D68F726FC435200CBB821 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +78,7 @@
 		227D690226FC435200CBB821 /* MyMovieChart */ = {
 			isa = PBXGroup;
 			children = (
+				2251D865270ACB2700A9EC4E /* Resources */,
 				227D690326FC435200CBB821 /* AppDelegate.swift */,
 				227D690526FC435200CBB821 /* SceneDelegate.swift */,
 				227D690726FC435200CBB821 /* ViewController.swift */,
@@ -135,6 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				227D691026FC435500CBB821 /* LaunchScreen.storyboard in Resources */,
+				2251D871270AD0DB00A9EC4E /* rain.jpeg in Resources */,
+				2251D86F270AD0DB00A9EC4E /* secret.jpeg in Resources */,
+				2251D870270AD0DB00A9EC4E /* darknight.jpeg in Resources */,
 				227D690D26FC435500CBB821 /* Assets.xcassets in Resources */,
 				227D690B26FC435200CBB821 /* Main.storyboard in Resources */,
 			);
