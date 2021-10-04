@@ -38,8 +38,10 @@ class ListViewController : UITableViewController {
         // 주어진 행에 맞는 데이터 소스를 읽어온다.
         let row = self.list[indexPath.row]
         // 테이블 셀 객체를 직접 생성하는 대신 큐로부터 가져옴
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
-
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
+ 
+        /*
         // 영화 제목이 표시될 레이블을 title 변수로 받음
         let title = cell.viewWithTag(101) as? UILabel
         // 영화 요약이 표시될 레이블을 desc 변수로 받음
@@ -54,6 +56,13 @@ class ListViewController : UITableViewController {
         desc?.text = row.description
         opendate?.text = row.opendate
         rating?.text = "\(row.rating!)"
+        */
+        
+        // 데이터 소스에 저장된 값을 각 아울렛 변수에 할당
+        cell.title?.text = row.title
+        cell.desc?.text = row.description
+        cell.opendate?.text = row.opendate
+        cell.rating?.text = "\(row.rating!)"
         
         return cell
     }
