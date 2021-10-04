@@ -29,7 +29,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="영화 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="704-xU-5d1">
-                                            <rect key="frame" x="16" y="15" width="240" height="21"/>
+                                            <rect key="frame" x="16" y="14" width="240" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -58,6 +58,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="desc" destination="INS-n7-akm" id="6on-ub-OCh"/>
+                                    <outlet property="opendate" destination="vpg-89-oGz" id="VLm-bY-JoP"/>
+                                    <outlet property="rating" destination="NO7-uG-oeT" id="C91-xA-boh"/>
+                                    <outlet property="title" destination="704-xU-5d1" id="cPv-iE-HoL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
