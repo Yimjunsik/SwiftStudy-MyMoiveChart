@@ -34,6 +34,9 @@ class ListViewController : UITableViewController {
         return datalist
     }()
 
+    
+    @IBOutlet var moreBtn: UIButton!
+    
     @IBAction func more(_ sender: Any) {
         // 0. 현재 페이지 값에 1을 추가.
         self.page += 1
@@ -138,6 +141,13 @@ class ListViewController : UITableViewController {
                 
                 // list 배열에 추가
                 self.list.append(mvo)
+            }
+            
+            // 7. 전체 데이터 Count를 얻는다.
+            let totalCount = (hoppin["totalCount"] as? NSString)!.integerValue
+            // 8. totalCount가 읽어온 데이터 크기와 같거나 큰 경우 더 보기 버튼을 막는다.
+            if self.list.count >= totalCount {
+                self.moreBtn.isHidden = true
             }
         } catch {
             NSLog("Parse Error!!")
