@@ -64,7 +64,16 @@ class ListViewController : UITableViewController {
         cell.desc?.text = row.description
         cell.opendate?.text = row.opendate
         cell.rating?.text = "\(row.rating!)"
-        cell.thumbnail.image = UIImage(named: row.thumbnail!)
+//        cell.thumbnail.image = UIImage(named: row.thumbnail!)
+        
+        // 썸네일 경로를 인자값으로 하는 URL 객체를 생성
+        let url: URL! = URL(string: row.thumbnail!)
+        
+        // 이미지를 읽어와 Data 객체에 저장
+        let imageData = try! Data(contentsOf: url)
+        
+        // UIImage 객체를 생성하여 아울렛 변수의 image 속성에 대입
+        cell.thumbnail.image = UIImage(data: imageData)
         
         return cell
     }
