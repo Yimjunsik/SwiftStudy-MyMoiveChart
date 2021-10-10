@@ -58,6 +58,9 @@ class ListViewController : UITableViewController {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
  
+        // 로그 출력
+        NSLog("제목 : \(row.title!), 호출된 행 번호 : \(indexPath.row)")
+        
         /*
         // 영화 제목이 표시될 레이블을 title 변수로 받음
         let title = cell.viewWithTag(101) as? UILabel
@@ -81,15 +84,24 @@ class ListViewController : UITableViewController {
         cell.opendate?.text = row.opendate
         cell.rating?.text = "\(row.rating!)"
 //        cell.thumbnail.image = UIImage(named: row.thumbnail!)
+
+
+//        // 썸네일 경로를 인자값으로 하는 URL 객체를 생성
+//        let url: URL! = URL(string: row.thumbnail!)
+//
+//        // 이미지를 읽어와 Data 객체에 저장
+//        let imageData = try! Data(contentsOf: url)
+//
+//        // UIImage 객체를 생성하여 아울렛 변수의 image 속성에 대입
+//        cell.thumbnail.image = UIImage(data: imageData)
         
-        // 썸네일 경로를 인자값으로 하는 URL 객체를 생성
-        let url: URL! = URL(string: row.thumbnail!)
         
-        // 이미지를 읽어와 Data 객체에 저장
-        let imageData = try! Data(contentsOf: url)
-        
-        // UIImage 객체를 생성하여 아울렛 변수의 image 속성에 대입
-        cell.thumbnail.image = UIImage(data: imageData)
+//        // 이미지 객체를 대입.
+//        cell.thumbnail.image = row.thumbnailImage
+        // 위의 썸네일 방식을 비동기 방식으로 수정
+        DispatchQueue.main.async(execute: {
+            cell.thumbnail.image = self.getThumbnailImage(indexPath.row)
+        })
         
         return cell
     }
@@ -105,7 +117,7 @@ class ListViewController : UITableViewController {
     
     func callMovieAPI() {
         // 1. 호핀 API 호출을 위한 URI를 생성
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=10&genreId=&order=releasedateasc"
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=30&genreId=&order=releasedateasc"
         let apiURI: URL! = URL(string: url)
         
         // 2. REST API를 호출
@@ -139,6 +151,11 @@ class ListViewController : UITableViewController {
                 mvo.detail          = r["linkUrl"] as? String
                 mvo.rating          = ((r["ratingAverage"] as! NSString).doubleValue)
                 
+                // 웹상에 있는 이미지를 읽어와 UIImage 객체로 생성
+                let url: URL! = URL(string: mvo.thumbnail!)
+                let imageData = try! Data(contentsOf: url)
+                mvo.thumbnailImage = UIImage(data: imageData)
+                
                 // list 배열에 추가
                 self.list.append(mvo)
             }
@@ -151,6 +168,23 @@ class ListViewController : UITableViewController {
             }
         } catch {
             NSLog("Parse Error!!")
+        }
+    }
+    
+    func getThumbnailImage(_ index: Int) -> UIImage {
+        // 인자값으로 받은 인덱스를 기ㅏㅂㄴ으로 해당하는 배열 데이터를 읽어옴
+        let mvo = self.list[index]
+        
+        // 메모이제이션 : 저장된 이미지가 있으면 반환. 없으면 내려받아서 저장 후 반환.
+        if let savedImage = mvo.thumbnailImage {
+            return savedImage
+        } else{
+            let url: URL! = URL(string: mvo.thumbnail!)
+            let imageData = try! Data(contentsOf: url)
+            // UIImage를 MovieVO 객체에 우선 저장
+            mvo.thumbnailImage = UIImage(data: imageData)
+            
+            return mvo.thumbnailImage!
         }
     }
 }
