@@ -8,6 +8,9 @@
 import UIKit
 class ListViewController : UITableViewController {
     
+    // 현재까지 읽어온 데이터의 정보
+    var page = 1
+    
     // 튜플 아이템으로 구성된 데이터 세트
 //    var dataset = [
 //        ("다크 나이트", "영웅물에 철학에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95, "darknight.jpeg"),
@@ -31,6 +34,16 @@ class ListViewController : UITableViewController {
         return datalist
     }()
 
+    @IBAction func more(_ sender: Any) {
+        // 0. 현재 페이지 값에 1을 추가.
+        self.page += 1
+        // 영화 차트 API 호출
+        self.callMovieAPI()
+        // 테이블 뷰 갱신
+        self.tableView.reloadData()
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.list.count
     }
@@ -83,19 +96,24 @@ class ListViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
+        // 영화 차트 API 호출
+        callMovieAPI()
+    }
+    
+    func callMovieAPI() {
         // 1. 호핀 API 호출을 위한 URI를 생성
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=10&genreId=&order=releasedateasc"
         let apiURI: URL! = URL(string: url)
         
         // 2. REST API를 호출
         let apidata = try! Data(contentsOf: apiURI)
         
-        // 3. 데이터 전송 결과를 로그로 출력 (반드시 필요한 코드는 아님)
-        let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
-        NSLog("API Result=\(log)")
+        // 3. 데이터 전송 결과를 로그로 출력
+        let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? "데이터가 없습니다."
+        NSLog("API Result = \(log)")
         
-        do {
-            // 4. JSON 객체를 파싱하여 NSDictionary 객체로 받음.
+        // 4. JSON 객체를 파싱하여 NSDictionary 객체로 변환
+        do{
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
             
             // 5. 데이터 구조에 따라 차례대로 캐스팅하며 읽어온다.
@@ -121,7 +139,8 @@ class ListViewController : UITableViewController {
                 // list 배열에 추가
                 self.list.append(mvo)
             }
+        } catch {
+            NSLog("Parse Error!!")
         }
-        catch { }
     }
 }
